@@ -3,6 +3,7 @@ export default function ProductCard({ coffee }) {
     <li className="product-card">
       <div className="product-img-container">
         <img src={coffee.image} alt={coffee.name} />
+        {coffee.popular && <span className="popular">popular</span>}
       </div>
       <div className="label">
         <h4>{coffee.name}</h4>

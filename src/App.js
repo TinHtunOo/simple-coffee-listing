@@ -17,6 +17,7 @@ export default function App() {
     const data = await response.json();
     setCoffeeList(data);
     setProduct(data);
+    console.log(data);
   }
 
   function handleAll() {
