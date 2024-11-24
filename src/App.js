@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import HeadingAndInfo from "./HeadingAndInfo";
+import Button from "./Button";
+import ProductCardContainer from "./ProductCardContainer";
+import { useEffect, useState } from "react";
+export default function App() {
+  const [coffeeList, setCoffeeList] = useState([]);
+  const [available, setAvailable] = useState("all");
+  const [product, setProduct] = useState([]);
+  async function getData() {
+    const response = await fetch(
+      " https://raw.githubusercontent.com/devchallenges-io/web-project-ideas/main/front-end-projects/data/simple-coffee-listing-data.json"
+    );
+    if (!response.ok) {
+      return;
+    }
 
-function App() {
+    const data = await response.json();
+    setCoffeeList(data);
+    setProduct(data);
+  }
+
+  function handleAll() {
+    setAvailable("all");
+    setProduct(coffeeList);
+  }
+
+  function handleAvailable() {
+    setAvailable("available");
+    setProduct((coffees) => coffees.filter((coffee) => coffee.available));
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="container">
+      <HeadingAndInfo />
+      <div className="button-container">
+        <Button
+          available={available === "all" ? "select" : ""}
+          onClick={handleAll}
         >
-          Learn React
-        </a>
-      </header>
+          All Products
+        </Button>
+        <Button
+          available={available === "available" ? "select" : ""}
+          onClick={handleAvailable}
+        >
+          Available Now
+        </Button>
+      </div>
+      <ProductCardContainer coffeeList={product} />
     </div>
   );
 }
-
-export default App;

@@ -1,13 +1,191 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Geist+Mono:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url("../public/image/bg-cafe.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #111315;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  min-height: 100vh;
+  padding: 100px 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 20px;
+  background-color: #1b1d1f;
+  padding: 70px;
+}
+
+.heading {
+  margin: auto;
+  text-align: center;
+  max-width: 480px;
+  position: relative;
+  z-index: 1;
+}
+
+.heading::after {
+  content: url(../public/image/vector.svg);
+  position: absolute;
+  top: -50px;
+  right: -5px;
+  z-index: 0;
+}
+
+.heading h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #fef7ee;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.heading p {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  color: #6f757c;
+  position: relative;
+  z-index: 1;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fef7ee;
+  background-color: #1b1d1f;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6f757c;
+}
+
+.select {
+  background-color: #6f757c;
+}
+
+ul {
+  list-style: none;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px 50px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-img-container {
+  width: fit-content;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h4 {
+  color: #fef7ee;
+}
+
+.coffee-price {
+  padding: 3px 5px;
+  font-size: 0.75rem;
+  border-radius: 5px;
+  background-color: #bee3cc;
+  font-weight: 600;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-container {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.rating {
+  color: #fef7ee;
+}
+
+.vote,
+.no-rating {
+  color: #6f757c;
+}
+
+.sold-out {
+  color: #ed735d;
+}
+
+.rating,
+.vote,
+.no-rating,
+.sold-out {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1024px) {
+  .product-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .container {
+    padding: 70px 40px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  body {
+    background-image: url("../public/image/bg-cafe.jpg");
+    background-repeat: no-repeat;
+    background-size: 1000px;
+    background-position: top;
+  }
+
+  .product-container {
+    grid-template-columns: 1fr;
+  }
+
+  .heading {
+    max-width: 340px;
+  }
 }
